@@ -22,6 +22,7 @@ shape = SubResource("WorldBoundaryShape2D_kds8m")
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
+modulate = Color(1, 0.974, 0.87, 1)
 position = Vector2(1840, -141)
 texture = ExtResource("1_84avs")
 
@@ -29,18 +30,19 @@ texture = ExtResource("1_84avs")
 position = Vector2(-0.00012207, -144.375)
 scale = Vector2(1, 0.53125)
 build_mode = 1
-polygon = PackedVector2Array(1647, -242.118, 1899, -259.059, 2058, -212, 2058, -176.235, 1649, -200.706)
+polygon = PackedVector2Array(1647, -242.118, 1900, -266.588, 2061, -208.235, 2060, -48.2353, 1646, -63.2941)
 one_way_collision = true
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+modulate = Color(1, 0.965, 0.85, 1)
 position = Vector2(2040, 245)
 texture = ExtResource("2_qmbkd")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
 build_mode = 1
-polygon = PackedVector2Array(1332, -46, 1815, -36, 2702, -12, 2702, 28, 1809, 4, 1329, -9)
+polygon = PackedVector2Array(1332, -46, 1815, -36, 2702, -12, 2694, 107, 1810, 71, 1329, 52)
 one_way_collision = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
@@ -52,14 +54,6 @@ one_way_collision = true
 build_mode = 1
 polygon = PackedVector2Array(2690, 206, 2786, 223, 2695, 148, 2702, -11, 2601, -16, 2610, 203)
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -5052.0
-offset_top = 425.0
-offset_right = 5846.0
-offset_bottom = 1027.0
-texture = ExtResource("2_h6gdl")
-stretch_mode = 1
-
 [node name="Player" parent="." instance=ExtResource("1_eglw2")]
 position = Vector2(62, 402)
 
@@ -67,3 +61,12 @@ position = Vector2(62, 402)
 position = Vector2(45, -168)
 zoom = Vector2(0.585, 0.585)
 position_smoothing_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.863833, 1, 0.81, 1)
+offset_left = -5052.0
+offset_top = 420.0
+offset_right = 5846.0
+offset_bottom = 1022.0
+texture = ExtResource("2_h6gdl")
+stretch_mode = 1
