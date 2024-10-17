@@ -1,3 +1,69 @@
-[gd_scene format=3 uid="uid://qjtvfg0jl3lp"]
+[gd_scene load_steps=7 format=3 uid="uid://qjtvfg0jl3lp"]
+
+[ext_resource type="Texture2D" uid="uid://clrtx8dc5e6h7" path="res://assets/Box.png" id="1_84avs"]
+[ext_resource type="PackedScene" uid="uid://q5g47vqx41ul" path="res://scenes/player.tscn" id="1_eglw2"]
+[ext_resource type="Texture2D" uid="uid://beanq8ebolxo3" path="res://assets/Ground.png" id="2_h6gdl"]
+[ext_resource type="Texture2D" uid="uid://bxrcu8blawj3p" path="res://assets/House.png" id="2_qmbkd"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kds8m"]
+distance = -392.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2u2i"]
+size = Vector2(252.5, 20)
 
 [node name="Game" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(103, 82)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_kds8m")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
+position = Vector2(1840, -141)
+texture = ExtResource("1_84avs")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D3"]
+position = Vector2(-0.00012207, -144.375)
+scale = Vector2(1, 0.53125)
+build_mode = 1
+polygon = PackedVector2Array(1647, -242.118, 1899, -259.059, 2058, -212, 2058, -176.235, 1649, -200.706)
+one_way_collision = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(2040, 245)
+texture = ExtResource("2_qmbkd")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+build_mode = 1
+polygon = PackedVector2Array(1332, -46, 1815, -36, 2702, -12, 2702, 28, 1809, 4, 1329, -9)
+one_way_collision = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(2135, 222)
+shape = SubResource("RectangleShape2D_g2u2i")
+one_way_collision = true
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D2"]
+build_mode = 1
+polygon = PackedVector2Array(2690, 206, 2786, 223, 2695, 148, 2702, -11, 2601, -16, 2610, 203)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -5052.0
+offset_top = 425.0
+offset_right = 5846.0
+offset_bottom = 1027.0
+texture = ExtResource("2_h6gdl")
+stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("1_eglw2")]
+position = Vector2(62, 402)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(45, -168)
+zoom = Vector2(0.585, 0.585)
+position_smoothing_enabled = true
