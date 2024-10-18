@@ -9,7 +9,7 @@
 distance = -392.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2u2i"]
-size = Vector2(252.5, 20)
+size = Vector2(250.25, 12.5)
 
 [node name="Game" type="Node2D"]
 
@@ -30,8 +30,9 @@ texture = ExtResource("1_84avs")
 position = Vector2(-0.00012207, -144.375)
 scale = Vector2(1, 0.53125)
 build_mode = 1
-polygon = PackedVector2Array(1647, -242.118, 1900, -266.588, 2061, -208.235, 2060, -48.2353, 1646, -63.2941)
+polygon = PackedVector2Array(1647, -242.118, 1900, -266.588, 2063, -227.059, 2062, -196.941, 1896, -223.294, 1646, -204.471)
 one_way_collision = true
+one_way_collision_margin = 14.1
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 
@@ -42,17 +43,24 @@ texture = ExtResource("2_qmbkd")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
 build_mode = 1
-polygon = PackedVector2Array(1332, -46, 1815, -36, 2702, -12, 2694, 107, 1810, 71, 1329, 52)
+polygon = PackedVector2Array(1329, -47, 2701, -14, 2703, 7, 1329, -27)
 one_way_collision = true
+one_way_collision_margin = 4.6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(2135, 222)
+position = Vector2(2135, 218.5)
 shape = SubResource("RectangleShape2D_g2u2i")
 one_way_collision = true
+one_way_collision_margin = 10.2
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D2"]
 build_mode = 1
-polygon = PackedVector2Array(2690, 206, 2786, 223, 2695, 148, 2702, -11, 2601, -16, 2610, 203)
+polygon = PackedVector2Array(2692, 204, 2786, 223, 2695, 148)
+one_way_collision = true
+one_way_collision_margin = 51.8
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PackedVector2Array(2694, 147, 2705, -8, 2698, -10, 2687, 147)
 
 [node name="Player" parent="." instance=ExtResource("1_eglw2")]
 position = Vector2(62, 402)
