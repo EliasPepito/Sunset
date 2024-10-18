@@ -22,7 +22,7 @@ shape = SubResource("WorldBoundaryShape2D_kds8m")
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
-modulate = Color(1, 0.974, 0.87, 1)
+modulate = Color(0.95215, 0.976506, 0.990234, 1)
 position = Vector2(1840, -141)
 texture = ExtResource("1_84avs")
 
@@ -37,7 +37,7 @@ one_way_collision_margin = 14.1
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
-modulate = Color(0.86104, 1, 0.9705, 1)
+modulate = Color(0.944387, 0.970564, 0.972827, 1)
 position = Vector2(2040, 245)
 texture = ExtResource("2_qmbkd")
 
