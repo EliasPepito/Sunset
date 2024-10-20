@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://qjtvfg0jl3lp"]
+[gd_scene load_steps=8 format=3 uid="uid://qjtvfg0jl3lp"]
 
 [ext_resource type="Texture2D" uid="uid://clrtx8dc5e6h7" path="res://assets/Box.png" id="1_84avs"]
 [ext_resource type="PackedScene" uid="uid://q5g47vqx41ul" path="res://scenes/player.tscn" id="1_eglw2"]
 [ext_resource type="Texture2D" uid="uid://beanq8ebolxo3" path="res://assets/Ground.png" id="2_h6gdl"]
 [ext_resource type="Texture2D" uid="uid://bxrcu8blawj3p" path="res://assets/House.png" id="2_qmbkd"]
+[ext_resource type="PackedScene" uid="uid://m8imknlj8fnq" path="res://scenes/carrot.tscn" id="5_03unu"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kds8m"]
 distance = -392.0
@@ -63,11 +64,10 @@ one_way_collision_margin = 51.8
 polygon = PackedVector2Array(2694, 147, 2705, -8, 2698, -10, 2687, 147)
 
 [node name="Player" parent="." instance=ExtResource("1_eglw2")]
-position = Vector2(62, 402)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(45, -168)
-zoom = Vector2(0.585, 0.585)
+position = Vector2(37, -146)
+zoom = Vector2(0.445, 0.445)
 position_smoothing_enabled = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -78,3 +78,12 @@ offset_right = 5846.0
 offset_bottom = 1022.0
 texture = ExtResource("2_h6gdl")
 stretch_mode = 1
+
+[node name="Area2D" parent="." instance=ExtResource("5_03unu")]
+position = Vector2(681, 371)
+
+[node name="Area2D2" parent="." instance=ExtResource("5_03unu")]
+position = Vector2(1880, -344)
+
+[node name="Area2D3" parent="." instance=ExtResource("5_03unu")]
+position = Vector2(2756, 123)
