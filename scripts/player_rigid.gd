@@ -1,34 +1,38 @@
 extends RigidBody2D
 
-@export var walk_speed: float = 4000
-@export var jump_force: float = 3000
+@onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var ray_cast_2d = $RayCast2D
 
-func _ready():
-	pass 
+var MOVE_SPEED = 50
+var MAX_SPEED = 100 
+var JUMP_FORCE = -300
 
-
-
-func _process(delta: float):
+func _physics_process(delta):
+	var direction = Input.get_axis("ui_left", "ui_right")
+	var force = Vector2.ZERO
+	
+	if direction: 
+		force.x = MOVE_SPEED * direction
+		if abs(linear_velocity.x) > MAX_SPEED: linear_velocity.x = MAX_SPEED * direction
+		
+	if _on_floor() and Input.is_action_just_pressed("ui_up"):
+		force.y = JUMP_FORCE
+	
+	_set_animation(direction)
+	apply_central_force(force)
+	
+func _integrate_forces(state):
+	rotation_degrees = 0
+	
+func _set_animation(direction):
+	
+	if direction > 0: animated_sprite_2d.flip_h = false
+	elif direction < 0: animated_sprite_2d.flip_h = true
+	
+	if not _on_floor(): animated_sprite_2d.play("jump")
+	elif abs(linear_velocity.x) > 0.1: animated_sprite_2d.play("walk")
+	else: animated_sprite_2d.play("idle")
 	
 	
-	var velocity = Vector2(0,0)
-	var jump = Vector2(0,0)
-	
-	
-	if Input.is_action_pressed("ui_right"):
-		velocity += Vector2(walk_speed,0)
-	elif Input.is_action_pressed("ui_left"):
-		velocity -= Vector2(walk_speed,0)
-	else: velocity = Vector2.ZERO
-	
-	if Input.is_action_just_pressed("ui_up"):
-		jump -= Vector2(0,jump_force)
-	else: jump = Vector2.ZERO
-	
-	apply_central_impulse(jump)
-	apply_central_force(velocity)
-	
-	if (velocity.x < 0):
-		$AnimatedSprite2D.scale.x = -1
-	else: $AnimatedSprite2D.scale.x = 1
-	
+func _on_floor():
+	if ray_cast_2d.is_colliding(): return true
