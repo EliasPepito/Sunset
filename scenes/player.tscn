@@ -67,10 +67,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bridq"]
-size = Vector2(104, 235)
+size = Vector2(159, 235)
 
 [node name="Player" type="RigidBody2D"]
 collision_layer = 2
+lock_rotation = true
 script = ExtResource("1_jbkjj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -79,5 +80,5 @@ sprite_frames = SubResource("SpriteFrames_8xqf4")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(39, -159)
+position = Vector2(66.5, -159)
 shape = SubResource("RectangleShape2D_bridq")
