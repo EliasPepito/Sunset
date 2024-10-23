@@ -69,7 +69,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bridq"]
 size = Vector2(104, 235)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="RigidBody2D"]
 collision_layer = 2
 script = ExtResource("1_jbkjj")
 
