@@ -8,6 +8,7 @@ var facing_right = true
 var can_jump_again = true
 @onready var animated_sprite = $AnimatedSprite2D
 
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():

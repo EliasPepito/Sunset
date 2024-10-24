@@ -3,26 +3,37 @@ extends RigidBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var ray_cast_2d = $RayCast2D
 
-var MOVE_SPEED = 50
-var MAX_SPEED = 100 
-var JUMP_FORCE = -300
+var MOVE_SPEED = 4000
+var MAX_SPEED = 4000
+var JUMP_FORCE = -2000
 
 func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
-	var force = Vector2.ZERO
+	var current_velocity = Vector2(0,0) 
+	var jump = Vector2(0,0)
+	linear_damp = 4
 	
-	if direction: 
-		force.x = MOVE_SPEED * direction
-		if abs(linear_velocity.x) > MAX_SPEED: linear_velocity.x = MAX_SPEED * direction
-		
-	if _on_floor() and Input.is_action_just_pressed("ui_up"):
-		force.y = JUMP_FORCE
+	if (Input.is_action_pressed("ui_left")):
+		current_velocity -= Vector2(MOVE_SPEED,0)
+	elif (Input.is_action_pressed("ui_right")):
+		current_velocity += Vector2(MOVE_SPEED,0)
+	else: current_velocity = Vector2.ZERO
+	
+	if (Input.is_action_pressed("ui_up")) and _on_floor():
+		jump += Vector2(0,JUMP_FORCE) 
+	#if not _on_floor():
+	#	linear_damp = 0
+	if linear_velocity.y > 0 :
+		linear_damp = 0
+	else:
+		linear_damp = 4
 	
 	_set_animation(direction)
-	apply_central_force(force)
+	apply_central_impulse(jump)
+	apply_central_force(current_velocity)
 	
 func _integrate_forces(state):
-	rotation_degrees = 0
+		rotation_degrees = 0
 	
 func _set_animation(direction):
 	
